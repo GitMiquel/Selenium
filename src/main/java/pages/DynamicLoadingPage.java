@@ -17,7 +17,7 @@ public class DynamicLoadingPage {
         driver.findElement(link_Example1).click();
         return new DynamicLoadingExample1Page(driver);
     }
-
+/**
     public DynamicLoadingExample2Page clickExample2(){
         driver.findElement(link_Example2).click();
         return new DynamicLoadingExample2Page(driver);
@@ -27,4 +27,5 @@ public class DynamicLoadingPage {
         driver.findElement(link_Example2).sendKeys(Keys.CONTROL, Keys.RETURN);
         return new DynamicLoadingExample2Page(driver);
     }
+ **/
 }
