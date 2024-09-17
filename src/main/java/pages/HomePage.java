@@ -31,6 +31,11 @@ public class HomePage {
         return new HoversPage(driver);
     }
 
+    public ShiftingContentPage clickShiftingContent(){
+        clickLink("Shifting Content");
+        return new ShiftingContentPage(driver);
+    }
+
     public KeyPressesPage clickKeyPresses(){
         clickLink("Key Presses");
         return new KeyPressesPage(driver);
