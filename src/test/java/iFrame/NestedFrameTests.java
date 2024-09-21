@@ -12,6 +12,7 @@ public class NestedFrameTests extends BaseTest {
     private String bottomFrameText = "BOTTOM";
 
 
+
     @Test
         public void checkFrameText(){
         var nestedFramePage = homePage.clickFramesPage().clickNestedFrames();

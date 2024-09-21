@@ -4,6 +4,7 @@ import com.google.common.io.Files;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -14,6 +15,8 @@ import utils.WindowManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 
 public class BaseTest {
@@ -26,18 +29,8 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
         goToHomepage();
-        homePage = new HomePage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        /** Initial set up checks
-         driver.manage().window().setSize(new Dimension(390,844));  //.fullscreen(); // .maximize()
-
-         List<WebElement> links = driver.findElements(By.tagName("a"));
-         System.out.println(links.size());
-
-         WebElement inputsLink = driver.findElement(By.linkText("Inputs"));
-         inputsLink.click();
-         System.out.println(driver.getTitle());
-        **/
     }
 
     @BeforeMethod
