@@ -36,6 +36,11 @@ public class HomePage {
         return new ShiftingContentPage(driver);
     }
 
+    public ForgotPasswordPage clickForgotPassword(){
+        clickLink("Forgot Password");
+        return new ForgotPasswordPage(driver);
+    }
+
     public KeyPressesPage clickKeyPresses(){
         clickLink("Key Presses");
         return new KeyPressesPage(driver);
