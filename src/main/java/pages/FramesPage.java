@@ -8,6 +8,7 @@ public class FramesPage {
 
     private WebDriver driver;
 
+
     public FramesPage(WebDriver driver){
         this.driver = driver;
     }
