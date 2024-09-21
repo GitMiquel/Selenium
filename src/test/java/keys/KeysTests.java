@@ -3,7 +3,6 @@ package keys;
 import base.BaseTest;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
-
 import static org.testng.Assert.assertEquals;
 
 public class KeysTests extends BaseTest {
