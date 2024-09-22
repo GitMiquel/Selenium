@@ -13,6 +13,7 @@ public class DynamicLoadingExample2Page {
     private By startButton = By.cssSelector("#start button");
     private By loadedText = By.id("finish");
 
+
     public DynamicLoadingExample2Page(WebDriver driver){
         this.driver = driver;
     }
@@ -25,5 +26,12 @@ public class DynamicLoadingExample2Page {
 
     public String getLoadedText(){
         return driver.findElement(loadedText).getText();
+    }
+
+    public String presenceOfStart(){
+        if (driver.findElement(startButton).isDisplayed()){
+            return "Start Button is Present";
+        }
+        return "Start Button is not Present";
     }
 }

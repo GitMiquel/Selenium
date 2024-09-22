@@ -2,6 +2,9 @@ package utils;
 
 
 import org.openqa.selenium.WebDriver;
+import java.util.Set;
+import org.openqa.selenium.support.PageFactory;
+import pages.DynamicLoadingExample2Page;
 
 public class WindowManager {
 
@@ -32,11 +35,6 @@ public class WindowManager {
     public void switchToTab(String tabTitle){
         var windows = driver.getWindowHandles();
 
-        System.out.println("Number of tabs: " + windows.size());
-
-        System.out.println("Window handles:");
-        windows.forEach(System.out::println);
-
         for(String window : windows){
             System.out.println("Switching to window: " + window);
             driver.switchTo().window(window);
@@ -48,4 +46,18 @@ public class WindowManager {
             }
         }
     }
+
+    public void switchToNewHandle(){
+        String originalTabHandle = driver.getWindowHandle();
+        Set<String> allWindowHandles = driver.getWindowHandles();
+
+        for (String handle : allWindowHandles) {
+            if (!handle.equals(originalTabHandle)) {
+                driver.switchTo().window(handle);
+                break;
+            }
+        }
+    }
+
+
 }

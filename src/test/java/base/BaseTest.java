@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class BaseTest {
-    private WebDriver driver;
+    public WebDriver driver;
     protected HomePage homePage;
 
 
@@ -48,8 +48,8 @@ public class BaseTest {
     public void recordFailure(ITestResult result){
         if(ITestResult.FAILURE == result.getStatus())
         {
-            var camera = (TakesScreenshot)driver;
-            File screenshot = camera.getScreenshotAs(OutputType.FILE);
+            var viewer = (TakesScreenshot)driver;
+            File screenshot = viewer.getScreenshotAs(OutputType.FILE);
             try{
                 Files.move(screenshot, new File("resources/screenshots/" + result.getName() + ".png"));
             }catch(IOException e){
