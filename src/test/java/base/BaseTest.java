@@ -4,6 +4,7 @@ import com.google.common.io.Files;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -17,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.support.events.WebDriverListener;
 
 
 public class BaseTest {
@@ -26,8 +28,10 @@ public class BaseTest {
 
     @BeforeClass
     public void SetUp(){
+        MyCustomListener listener = new MyCustomListener();
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
+        driver = new EventFiringDecorator<>(listener).decorate(driver);
         goToHomepage();
         //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
@@ -74,6 +78,21 @@ public class BaseTest {
                 .domain("the-internet.herokuapp.com")
                 .build();
         driver.manage().addCookie(cookie);
+    }
+
+
+    public class MyCustomListener implements WebDriverListener {
+
+        @Override
+        public void beforeClick(WebElement element) {
+            System.out.println("Before clicking on: " + element);
+        }
+
+        @Override
+        public void afterClick(WebElement element) {
+            System.out.println("After clicking on: " + element);
+        }
+
     }
 
 
