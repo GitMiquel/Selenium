@@ -30,9 +30,10 @@ public class BaseTest {
     public void SetUp(){
         MyCustomListener listener = new MyCustomListener();
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(getChromeOptions());
         driver = new EventFiringDecorator<>(listener).decorate(driver);
         goToHomepage();
+        //setCookie();
         //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     }
@@ -70,6 +71,8 @@ public class BaseTest {
     private ChromeOptions getChromeOptions(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("disable-infobars");
+        //options.addArguments("--headless");
+        //options.addArguments("--window-size=1920,1080");
         return options;
     }
 
@@ -79,6 +82,8 @@ public class BaseTest {
                 .build();
         driver.manage().addCookie(cookie);
     }
+
+
 
 
     public class MyCustomListener implements WebDriverListener {

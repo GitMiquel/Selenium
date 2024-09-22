@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage {
@@ -100,6 +101,20 @@ public class HomePage {
 
     private void clickLink(String linkText){
         driver.findElement(By.linkText(linkText)).click();
+    }
+
+
+    public void deleteCookie(String cookie){
+        driver.manage().deleteCookieNamed(cookie);
+    }
+
+    public void checkCookie(String cookie){
+        Cookie existingCookie = driver.manage().getCookieNamed(cookie);
+        if (existingCookie != null) {
+            System.out.println("Cookie is present: " + existingCookie);
+        } else {
+            System.out.println("Cookie is not present.");
+        }
     }
 
 }
