@@ -25,6 +25,13 @@ public class BaseTest {
     public WebDriver driver;
     protected HomePage homePage;
 
+    /**
+     * Event listener below monitors and logs WebDriver events such as
+     * Before or after clicking an element.
+     * Before or after navigating to a page.
+     * When an exception is thrown.
+     * Before or after finding an element.
+     */
 
     @BeforeClass
     public void SetUp(){
@@ -38,16 +45,29 @@ public class BaseTest {
 
     }
 
+    /**
+     * Method to open the WebDriver on the Testing Homepage
+     */
+
     @BeforeMethod
     public void goToHomepage(){
         driver.get("https://the-internet.herokuapp.com/");
         homePage = new HomePage(driver);
     }
 
+    /**
+     * Closing up the WebDriver
+     */
+
     @AfterClass
     public void tearDown(){
         driver.quit();
     }
+
+    /**
+     * This method records test failures and takes a screenshot at the time of failure,
+     * stores them as a PNG file in the resources/screenshots/ folder
+     */
 
     @AfterMethod
     public void recordFailure(ITestResult result){
@@ -63,10 +83,18 @@ public class BaseTest {
         }
     }
 
+    /**
+     * Method calling WindowManager to handle browser windows and tabs
+     */
+
     public WindowManager getWindowManager(){
 
         return new WindowManager(driver);
     }
+
+    /**
+     * Method for adding several chrome options, currently only infobars disabled being switched on
+     */
 
     private ChromeOptions getChromeOptions(){
         ChromeOptions options = new ChromeOptions();
@@ -76,6 +104,10 @@ public class BaseTest {
         return options;
     }
 
+    /**
+     * Cookie Builder Method being added on Test Start to the homepage
+     */
+
     private void setCookie(){
         Cookie cookie = new Cookie.Builder("Miquel", "123")
                 .domain("the-internet.herokuapp.com")
@@ -84,7 +116,9 @@ public class BaseTest {
     }
 
 
-
+    /**
+     * Listener Class hosting methods to log before and after clicking on web elements
+     */
 
     public class MyCustomListener implements WebDriverListener {
 

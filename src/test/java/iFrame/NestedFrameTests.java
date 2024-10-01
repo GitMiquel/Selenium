@@ -11,7 +11,10 @@ public class NestedFrameTests extends BaseTest {
     private String leftFrameText = "LEFT";
     private String bottomFrameText = "BOTTOM";
 
-
+    /**
+     * Test sequentially interacting with a set of nested frames
+     * and checking the output text upon frame selection
+     */
 
     @Test
         public void checkFrameText(){

@@ -7,6 +7,13 @@ import static org.testng.Assert.*;
 
 public class HoverTests extends BaseTest {
 
+    /**
+     * Test checking a Hovering interaction that will trigger a caption
+     * Checking the caption triggered upon hover
+     * Checking and selecting a link displayed while hovering
+     * Clicking on the link and validating the url
+     */
+
     @Test
     public void testHoverUser1(){
         var hoversPage = homePage.clickHovers();

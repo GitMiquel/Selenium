@@ -6,6 +6,10 @@ import static org.testng.Assert.assertEquals;
 
 public class DropDownTests extends BaseTest {
 
+    /**
+     *Test expanding a dropdown, selecting an option and checking that the option remains selected upon dropdown collapse
+     */
+
     @Test
     public void optionSelection1Check(){
         var dropdownPage = homePage.clickDropDown();

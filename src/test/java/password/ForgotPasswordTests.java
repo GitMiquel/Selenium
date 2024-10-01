@@ -5,9 +5,12 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 public class ForgotPasswordTests extends BaseTest {
+
     /**
-     * Test does not work as clicking the submit button at the moment results in a 500
+     * Test adding an email to an input field, selecting the submit button and checking for a confirmation text
+     * Test does not work as clicking the submit button at the moment results in a 500 Internal Server Error
      */
+
     @Test
     public void retrievePasswordTest(){
         var forgotPasswordPage = homePage.clickForgotPassword();

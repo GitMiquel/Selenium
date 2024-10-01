@@ -9,6 +9,10 @@ import static org.testng.Assert.*;
 
 public class LoginTests extends BaseTest {
 
+    /**
+     * Test to check login by entering credentials
+     * and a prompted successful login message
+     */
     @Test
     public void testSuccessfulLogin(){
 

@@ -7,6 +7,11 @@ import static org.testng.Assert.assertEquals;
 
 public class FileUploadTests extends BaseTest {
 
+    /**
+     * Test checking the upload of a file by entering the file path into the input field directly
+     * then checking the correct file has been uploaded
+     */
+
     @Test
     public void testFileUpload(){
         var uploadPage = homePage.clickUploadFile();

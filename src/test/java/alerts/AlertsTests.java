@@ -7,6 +7,9 @@ import static org.testng.Assert.assertEquals;
 
 public class AlertsTests extends BaseTest {
 
+    /**
+     * Test Checking that a Javascript alert has been triggered and accepted
+     */
     @Test
     public void testAcceptAlert() {
         var alertsPage = homePage.clickJSAlerts();
@@ -14,6 +17,10 @@ public class AlertsTests extends BaseTest {
         alertsPage.acceptAlert();
         assertEquals(alertsPage.getResult(), "You successfully clicked an alert", "Incorrect Result Text");
     }
+
+    /**
+     * Test Checking the text within a Javascript alert and that it can be successfully dismissed
+     */
 
     @Test
     public void testGetAlertText() {
@@ -23,6 +30,10 @@ public class AlertsTests extends BaseTest {
         alertsPage.dismissAlert();
         assertEquals(text, "I am a JS Confirm", "Incorrect Alert Text");
     }
+
+    /**
+     * Test Checking the interaction with a text input field within a Javascript alert
+     */
 
     @Test
     public void testSetInputAlert(){
