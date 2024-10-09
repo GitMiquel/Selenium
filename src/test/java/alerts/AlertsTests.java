@@ -2,8 +2,10 @@ package alerts;
 
 import base.BaseTest;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.asserts.SoftAssert.*;
 
 public class AlertsTests extends BaseTest {
 
@@ -37,11 +39,14 @@ public class AlertsTests extends BaseTest {
 
     @Test
     public void testSetInputAlert(){
+        SoftAssert softAssert = new SoftAssert();
         var alertsPage = homePage.clickJSAlerts();
-        alertsPage.triggerPrompt();
         String text = "My Selenium Project";
+
+        alertsPage.triggerPrompt();
         alertsPage.setInputAlert(text);
         alertsPage.acceptAlert();
-        assertEquals(alertsPage.getResult(), "You entered: " + text, "Incorrect Results Text");
+        softAssert.assertEquals(alertsPage.getResult(), "You entered: " + text, "Incorrect Results Text");
+        softAssert.assertAll();
     }
 }
